@@ -97,9 +97,6 @@ La app sigue una arquitectura ligera por capas:
 - Datos locales: `SharedPreferences` + filesystem
 - Integraciones externas: Radio Browser, iTunes Search, RSS y streams de audio
 
-Las notas operativas y las pautas internas para agentes se guardan en la
-carpeta local `memoria/`, excluida expresamente de Git.
-
 Documentación pública:
 
 - [Política de privacidad](./docs/privacy_policy.html)
@@ -107,34 +104,107 @@ Documentación pública:
 ## Requisitos de desarrollo
 
 - Flutter SDK compatible con la version actual del proyecto
-- Android SDK para build Android
-- Xcode para targets Apple
+- Android SDK y JDK 17 o 21 para compilar Android
+- macOS, Xcode y CocoaPods para compilar iOS
+- Cuenta de Apple Developer para ejecutar en un dispositivo físico o distribuir
+  una versión firmada de iOS
 - Entorno con acceso a internet para buscar radios, podcasts y reproducir streams remotos
 
-## Instalacion
+## Preparación común
 
 ```bash
+flutter doctor -v
 flutter pub get
+flutter analyze
+flutter test
 ```
 
-## Ejecucion
+## Compilar para Android
+
+La compilación Android puede realizarse en Linux, macOS o Windows. Los scripts
+del repositorio seleccionan automáticamente una instalación compatible de JDK
+17 o 21.
+
+Para listar dispositivos y ejecutar la aplicación:
 
 ```bash
-flutter run
-```
-
-Para Android se necesita JDK 17 o 21. Los scripts seleccionan un JDK compatible
-desde `RADIOMIX_JAVA_HOME`, `JAVA_HOME`, `.tools/jdk-21` (solo local) o las
-ubicaciones habituales del sistema:
-
-```bash
-./scripts/android_with_jdk.sh flutter run
-./scripts/android_with_jdk.sh ./gradlew :app:assembleDebug
+flutter devices
 ./scripts/android_run.sh
+```
+
+Para generar artefactos release:
+
+```bash
+# APK universal
 ./scripts/android_build_apk.sh
+
+# Android App Bundle para Google Play
 ./scripts/android_build_appbundle.sh
+
+# APK independiente para cada ABI
 ./scripts/android_build_apk_split.sh
 ```
+
+Cada comando muestra al finalizar la ubicación de los artefactos generados.
+Antes de distribuir una release, configura una firma de publicación y evita
+incorporar credenciales o claves al repositorio. Para más detalle, consulta la
+[guía oficial de compilación Android](https://docs.flutter.dev/deployment/android).
+
+## Compilar para iOS
+
+Flutter solo permite compilar iOS desde macOS con Xcode. Este proyecto tiene
+como mínimo iOS 13.0.
+
+Prepara Xcode y abre el simulador:
+
+```bash
+sudo xcodebuild -license
+xcodebuild -downloadPlatform iOS
+open -a Simulator
+flutter devices
+```
+
+Para ejecutar la aplicación, sustituye `<device-id>` por el identificador que
+muestre `flutter devices`:
+
+```bash
+flutter run -d <device-id>
+```
+
+Para compilar para el simulador o validar una release sin firma:
+
+```bash
+flutter build ios --simulator
+flutter build ios --release --no-codesign
+```
+
+Antes de ejecutar en un dispositivo físico o crear una IPA firmada, abre el
+workspace de Xcode:
+
+```bash
+open ios/Runner.xcworkspace
+```
+
+En el target `Runner`, revisa `Signing & Capabilities`, selecciona el equipo de
+Apple Developer y sustituye el identificador provisional
+`com.example.radioMix` por un Bundle Identifier propio y único.
+
+Para generar el archivo de distribución:
+
+```bash
+flutter build ipa --release
+```
+
+El comando muestra al finalizar la ubicación del archivo Xcode y de la IPA. La
+versión puede sobrescribirse en una compilación concreta:
+
+```bash
+flutter build ipa --release --build-name 1.6.5 --build-number 5
+```
+
+Consulta la [configuración oficial de iOS](https://docs.flutter.dev/platform-integration/ios/setup)
+y la [guía oficial de distribución iOS](https://docs.flutter.dev/deployment/ios)
+para configurar certificados, perfiles y App Store Connect.
 
 ## Verificaciones basicas
 
@@ -146,33 +216,6 @@ flutter test
 
 Última validación local (2026-08-11): análisis sin incidencias, `52` pruebas
 correctas y procesamiento del manifest Android completado.
-
-## Configuracion Android de firma
-
-El proyecto soporta firma release mediante:
-
-- `android/keystore.properties`
-- o variables de entorno `RADIOMIX_*`
-
-Archivo de ejemplo:
-
-- `android/keystore.properties.example`
-
-Claves esperadas:
-
-- `storeFile`
-- `storePassword`
-- `keyAlias`
-- `keyPassword`
-
-Variables equivalentes:
-
-- `RADIOMIX_STORE_FILE`
-- `RADIOMIX_STORE_PASSWORD`
-- `RADIOMIX_KEY_ALIAS`
-- `RADIOMIX_KEY_PASSWORD`
-
-Si no hay configuracion release completa, el build de release cae a debug signing.
 
 ## Persistencia local
 
@@ -227,28 +270,8 @@ El backup exporta:
 Los backups pueden contener credenciales de proveedores introducidas por el
 usuario y deben tratarse como archivos sensibles.
 
-## Seguridad y notas operativas
-
-- Android mantiene `android:usesCleartextTraffic="true"`
-- `android.keystore`, `android/keystore.properties`, archivos de entorno y
-  credenciales están excluidos de Git
-- `.tools/`, `.claude/` y `memoria/` son exclusivamente locales
-- nunca se deben forzar archivos ignorados al preparar una publicación
-
 ## Testing actual
 
 La suite incluye pruebas de modelos, servicios, persistencia, backup, audio,
 búsqueda, coordinación de reproducción y widgets principales. La referencia
 válida es siempre el resultado de `flutter test` en el commit que se publique.
-
-## Mejoras recomendadas
-
-Resumen corto:
-
-1. aumentar cobertura de pruebas
-2. unificar inyeccion de dependencias con Riverpod
-3. extraer backup y datos a capas mas limpias
-4. endurecer configuracion Android
-
-El roadmap público debe mantenerse en los issues del repositorio. Las notas de
-trabajo privadas permanecen en `memoria/` y no forman parte de los commits.
