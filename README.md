@@ -97,8 +97,7 @@ La app sigue una arquitectura ligera por capas:
 - Datos locales: `SharedPreferences` + filesystem
 - Integraciones externas: Radio Browser, iTunes Search, RSS y streams de audio
 
-Las pautas para agentes y colaboradores automatizados están en
-[AGENTS.md](./AGENTS.md). Las notas operativas internas se guardan en la
+Las notas operativas y las pautas internas para agentes se guardan en la
 carpeta local `memoria/`, excluida expresamente de Git.
 
 Documentación pública:

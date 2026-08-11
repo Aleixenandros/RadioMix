@@ -24,10 +24,8 @@ migrate_working_dir/
 # Local toolchains (install JDK/SDKs outside Git)
 /.tools/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Local editor configuration
+/.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
