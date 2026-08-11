@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - Radio Mix</title>
+    <style>
+        :root {
+            /* Paleta basada en Material 3 a partir de Color(0xFF6750A4) */
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            --md-sys-color-background: #FEF7FF;
+            --md-sys-color-on-background: #1D1B20;
+            --md-sys-color-surface: #FEF7FF;
+            --md-sys-color-on-surface: #1D1B20;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --md-sys-color-primary: #D0BCFF;
+                --md-sys-color-on-primary: #381E72;
+                --md-sys-color-primary-container: #4F378B;
+                --md-sys-color-on-primary-container: #EADDFF;
+                --md-sys-color-background: #141218;
+                --md-sys-color-on-background: #E6E0E9;
+                --md-sys-color-surface: #141218;
+                --md-sys-color-on-surface: #E6E0E9;
+                --md-sys-color-surface-variant: #49454F;
+                --md-sys-color-on-surface-variant: #CAC4D0;
+            }
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background-color: var(--md-sys-color-surface);
+            border-radius: 28px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--md-sys-color-surface-variant);
+        }
+
+        h2 {
+            color: var(--md-sys-color-primary);
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--md-sys-color-primary-container);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: var(--md-sys-color-on-surface);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        .highlight {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* Animación suave para la entrada de la tarjeta */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Radio Mix</h1>
+        <p>Política de Privacidad</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>1. Introducción</h2>
+            <p>Bienvenido a <span class="highlight">Radio Mix</span>. Nos tomamos muy en serio tu privacidad. Esta Política de Privacidad explica cómo se maneja la información al utilizar nuestra aplicación móvil. Radio Mix es una aplicación diseñada para ofrecer una experiencia auditiva fluida integrando streaming digital y sintonía FM local, todo bajo un diseño Material 3 moderno.</p>
+
+            <h2>2. Recopilación y Uso de Datos</h2>
+            <p><strong>Radio Mix NO recopila, almacena, rastrea ni comparte información personal identificable</strong> de sus usuarios en servidores externos. Todo el funcionamiento principal de la aplicación se realiza de manera segura y local en tu dispositivo.</p>
+
+            <h3>2.1 Preferencias Locales y Colecciones</h3>
+            <p>La aplicación guarda tus configuraciones y preferencias (como el modo claro/oscuro, la lista de tus emisoras favoritas) estrictamente de forma local en el almacenamiento interno de tu dispositivo. Esta información se queda contigo y no se transmite a terceros ni a nuestros servidores.</p>
+            
+            <h3>2.2 Permisos del Dispositivo</h3>
+            <p>Para su correcto funcionamiento, Radio Mix puede solicitar los siguientes permisos dependiendo de cómo uses la app:</p>
+            <ul>
+                <li><strong>Almacenamiento / Gestión de Archivos:</strong> Para permitirte realizar copias de seguridad de tus listas de favoritos y ajustes de forma local, o compartir estas listas a través del selector de archivos de tu teléfono.</li>
+                <li><strong>Conexión a Internet:</strong> Únicamente requerida para sintonizar y almacenar en caché el streaming de radio en línea y descargar la información/carátula base de las emisoras.</li>
+                <li><strong>Control de Audio / Estado del teléfono:</strong> Para pausar la música de forma segura cuando desconectes los auriculares o recibas una llamada, ofreciendo una experiencia sin interrupciones.</li>
+            </ul>
+
+            <h2>3. Servicios de Terceros</h2>
+            <p>Para la reproducción de streaming de audio, la aplicación tiene que conectarse directamente a las URL de las estaciones de radio proporcionadas en el servicio o agregadas manualmente por ti. Al escuchar una estación de radio en línea, tu dirección IP y datos técnicos de conexión (necesarios para el streaming TCP/IP) pueden ser visibles para los servidores que proporcionan dicho flujo de audio, tal como ocurre al navegar por internet. Radio Mix no controla ni se hace responsable de las políticas de privacidad individuales que posean dichas estaciones o servicios de servidores.</p>
+
+            <h2>4. Privacidad Infantil</h2>
+            <p>Nuestra aplicación es apta para todos los públicos. Dado que no recopilamos ni monetizamos información personal con fines publicitarios, no solicitamos conscientemente información de niños menores de edad ni utilizamos ningún tipo de red de publicidad o segmentación infantil.</p>
+
+            <h2>5. Cambios en esta Política de Privacidad</h2>
+            <p>Nos reservamos el derecho de modificar o actualizar esta Política de Privacidad en cualquier momento. Te recomendamos visitar esta página ocasionalmente para mantenerte informado sobre cualquier novedad. Cualquier cambio será efectivo a partir del momento de su publicación oficial.</p>
+
+            <h2>6. Contacto</h2>
+            <p>Si tienes alguna pregunta, duda, queja o sugerencia respecto a esta Política de Privacidad o el funcionamiento general de Radio Mix, puedes comunicarte con nosotros a través de los canales de soporte (dirección de correo electrónico) de contacto indicados en la ficha de la tienda de aplicaciones de Google Play Store.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Radio Mix. Todos los derechos reservados. <br>
+        Última actualización: Febrero de 2026
+    </div>
+
+</body>
+</html>
