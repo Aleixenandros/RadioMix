@@ -2,6 +2,12 @@
 
 Aplicacion Flutter para radio online y podcasts con reproduccion en segundo plano, favoritos, suscripciones, descargas offline y backup local.
 
+## Captura de pantalla
+
+<p align="center">
+  <img src="./docs/images/radio-mix-player.png" alt="Reproductor de RadioMix con la emisora Los 40" width="360">
+</p>
+
 ## Estado actual
 
 - Proyecto Flutter multiplataforma con foco practico en Android
